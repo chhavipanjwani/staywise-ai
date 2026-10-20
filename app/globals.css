@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f0f2f9;
+  --text: #0c1532;
+  --muted: #69738e;
+  --line: #e5e9f2;
+  --navy: #0c1532;
+  --indigo: #5554d8;
+  --teal: #23b8a7;
+  --warm: #ffb85c;
+}
+
+html.dark {
+  --bg: #0a1025;
+  --surface: #111a35;
+  --surface-2: #182244;
+  --text: #f6f7fb;
+  --muted: #a4aec7;
+  --line: #253158;
+  --navy: #f7f8ff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { min-width: 320px; background: var(--bg); }
+a { text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+
+.container-wide { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.surface { background: var(--surface); border: 1px solid var(--line); }
+.muted { color: var(--muted); }
+.gradient-text { background: linear-gradient(110deg, #5a5ce2, #24b9a6 70%); -webkit-background-clip: text; color: transparent; }
+.hero-grid { background-image: linear-gradient(rgba(91, 94, 210, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(91, 94, 210, .06) 1px, transparent 1px); background-size: 36px 36px; }
+.glass { background: color-mix(in srgb, var(--surface) 78%, transparent); backdrop-filter: blur(18px); border: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+.leaflet-container { height: 100%; min-height: 360px; border-radius: 22px; z-index: 1; }
+.leaflet-control-attribution { font-size: 9px !important; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+@media (max-width: 640px) {
+  .container-wide { width: min(100% - 28px, 1180px); }
+}
