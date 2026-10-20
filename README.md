@@ -27,7 +27,7 @@ npm run start
 - Search, city/type/budget/rating/amenity filters, sorting, saved stays, comparison up to three properties, inquiry flow, local review submission, and browser-persistent demo state.
 - Explainable recommendation scoring based on city, stay type, budget, amenities, ratings, and study/lifestyle signals.
 - Rule-based AI assistant fallback supporting English, Hindi, and Hinglish-style prompts without inventing listing facts.
-- TinyFish-ready server connector in `lib/tinyfish.ts` for live Search and Agent enrichment. The browser never receives `TINYFISH_API_KEY`; without it, the deterministic demo inventory remains active.
+- TinyFish server integration through `/api/tinyfish/search` and `/api/tinyfish/agent`. Search requests are made on the server with `TINYFISH_API_KEY`; the browser never receives the key. If the key is unavailable, the deterministic demo inventory remains active.
 - Guided judge demo for a Delhi student PG scenario and a Jaipur hotel scenario.
 - Leaflet + OpenStreetMap discovery maps with listing pins and clearly labeled straight-line context.
 - Adult-only roommate matching prototype with weighted compatibility, shared preferences, differences, mutual-consent request state, and privacy safeguards.
@@ -45,7 +45,7 @@ Production integration points:
 - Supabase Storage for validated property images.
 - Server-side AI provider integration through environment variables only. Keep keys out of client components.
 - A routing provider can replace straight-line distance labels when available.
-- TinyFish Search / Agent can be activated in a serverful deployment with `TINYFISH_API_KEY`. TinyFish Search uses `https://api.search.tinyfish.ai`; TinyFish Agent uses `https://agent.tinyfish.ai/v1/automation/run`.
+- TinyFish Search / Agent are wired for a serverful deployment with `TINYFISH_API_KEY`. The AI assistant calls `/api/tinyfish/search`, displays live source links when available, and falls back to explainable demo recommendations when the key or service is unavailable. TinyFish Search uses `https://api.search.tinyfish.ai`; TinyFish Agent uses `https://agent.tinyfish.ai/v1/automation/run`.
 
 Copy `.env.example` to `.env.local` when wiring those services.
 
