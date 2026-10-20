@@ -66,6 +66,16 @@ export const properties: Property[] = [
 
 export const cities = ['Delhi', 'Jaipur', 'Mumbai', 'Bengaluru', 'Pune', 'Hyderabad'];
 
+export type GenderPolicy = 'girls' | 'boys' | 'co-living';
+
+export function getGenderPolicy(property: Property): GenderPolicy {
+  const searchable = `${property.name} ${property.tags.join(' ')}`.toLowerCase();
+  if (searchable.includes('girls') || searchable.includes('women')) return 'girls';
+  if (searchable.includes('boys')) return 'boys';
+  if (property.id === 'hostel-campus-delhi' || property.id === 'pg-citrine-bengaluru') return 'boys';
+  return 'co-living';
+}
+
 export const demoReviews = [
   { propertyId: 'pg-quiet-corner-igdtuw', category: 'Hygiene', score: 4.8, text: 'The rooms are cleaned regularly and the common areas stay calm.', author: 'Verified demo reviewer', date: '2 weeks ago' },
   { propertyId: 'pg-quiet-corner-igdtuw', category: 'Food quality', score: 4.5, text: 'Simple home-style food, with enough variety through the week.', author: 'Demo resident', date: '1 month ago' },
